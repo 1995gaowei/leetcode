@@ -94,6 +94,45 @@ let quickSort = function(arr) {
     }
 };
 
+let mergeSort = function(arr) {
+    let n = arr.length;
+    let temp = new Array(n);
+    sort(arr, 0, n-1);
+    
+    function sort(arr, start, end) {
+        if (start < end) {
+            let mid = parseInt((start+end) / 2);
+            sort(arr, start, mid);
+            sort(arr, mid+1, end);
+            merge(arr, start, mid, end);
+        }
+    }
+
+    function merge(arr, start, mid, end) {
+        let i = start, j = mid, m = mid+1, n = end, k = 0;
+
+        while (i <= j && m <= n) {
+            if (arr[i] <= arr[m]) {
+                temp[k++] = arr[i++]
+            } else {
+                temp[k++] = arr[m++]
+            }
+        }
+
+        while (i <= j) {
+            temp[k++] = arr[i++]
+        }
+
+        while (m <= n) {
+            temp[k++] = arr[m++]
+        }
+
+        for (let l = 0; l < k; l++) {
+            arr[start+l] = temp[l]
+        }
+    }
+}
+
 let a = [3,1,5,7,2,4,9,6,10,8];
 
 // let b = new Array(100000);
@@ -113,6 +152,7 @@ let a = [3,1,5,7,2,4,9,6,10,8];
 // shellSort(a);
 // selectSort(a);
 // bubbleSort(a);
-quickSort(a);
+// quickSort(a);
+mergeSort(a)
 
 console.log(a);

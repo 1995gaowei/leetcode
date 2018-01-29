@@ -124,49 +124,44 @@ function quickSort(arr) {
 ## Merge Sort
 
 ```
-void mergearray(int a[], int first, int mid, int last, int temp[])  
-{  
-    int i = first, j = mid + 1;  
-    int m = mid,   n = last;  
-    int k = 0;  
-      
-    while (i <= m && j <= n)  
-    {  
-        if (a[i] <= a[j])  
-            temp[k++] = a[i++];  
-        else  
-            temp[k++] = a[j++];  
-    }  
-      
-    while (i <= m)  
-        temp[k++] = a[i++];  
-      
-    while (j <= n)  
-        temp[k++] = a[j++];  
-      
-    for (i = 0; i < k; i++)  
-        a[first + i] = temp[i];  
-}  
-void mergesort(int a[], int first, int last, int temp[])  
-{  
-    if (first < last)  
-    {  
-        int mid = (first + last) / 2;  
-        mergesort(a, first, mid, temp);    //左边有序  
-        mergesort(a, mid + 1, last, temp); //右边有序  
-        mergearray(a, first, mid, last, temp); //再将二个有序数列合并  
-    }  
-}  
-  
-bool MergeSort(int a[], int n)  
-{  
-    int *p = new int[n];  
-    if (p == NULL)  
-        return false;  
-    mergesort(a, 0, n - 1, p);  
-    delete[] p;  
-    return true;  
-}  
+function mergeSort(arr) {
+    let n = arr.length;
+    let temp = new Array(n);
+    sort(arr, 0, n-1);
+    
+    function sort(arr, start, end) {
+        if (start < end) {
+            let mid = parseInt((start+end) / 2);
+            sort(arr, start, mid);
+            sort(arr, mid+1, end);
+            merge(arr, start, mid, end);
+        }
+    }
+
+    function merge(arr, start, mid, end) {
+        let i = start, j = mid, m = mid+1, n = end, k = 0;
+
+        while (i <= j && m <= n) {
+            if (arr[i] <= arr[m]) {
+                temp[k++] = arr[i++]
+            } else {
+                temp[k++] = arr[m++]
+            }
+        }
+
+        while (i <= j) {
+            temp[k++] = arr[i++]
+        }
+
+        while (m <= n) {
+            temp[k++] = arr[m++]
+        }
+
+        for (let l = 0; l < k; l++) {
+            arr[start+l] = temp[l]
+        }
+    }
+}
 ```
 
 ## Summary
