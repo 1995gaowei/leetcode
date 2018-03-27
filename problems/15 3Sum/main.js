@@ -1,5 +1,5 @@
 var threeSum = function(nums) {
-    nums.sort();
+    nums.sort((a, b) => a-b);
     let res = [];
     for (let i = 0; i < nums.length-2; i++) {
         if ( i == 0 || nums[i] != nums[i-1]) {
@@ -19,4 +19,4 @@ var threeSum = function(nums) {
     return res;
 };
 
-console.log(threeSum([-1,0,1,2,-1,-4]));
+console.log(threeSum([-4,-2,-2,-2,0,1,2,2,2,3,3,4,4,6,6]));
