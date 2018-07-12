@@ -53,6 +53,7 @@
   ```
 
 - 判断是否为可能的出栈序列
+
   ```
   function IsPopOrder(pushV, popV) {
     var stack = [];
@@ -65,5 +66,12 @@
       }
     }
     return stack.length == 0;
+  }
+  ```
+
+- 字符串全排列
+  ```
+  function Permutation(str) {
+
   }
   ```
